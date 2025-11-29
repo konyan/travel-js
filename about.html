@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - TravelBloom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-H58XpWZ2G9r9bFJ8NXjg2zp5C52f40Z3mAWUEYTpF9M6rymdlmdVino2z1YJgjQly+Pd+UuM7Srbn2j6N39UgA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      line-height: 1.6;
+      /* City skyline background */
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2613&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.5rem 3rem;
+      background: rgba(3, 50, 77, 0.3); /* Transparent header */
+      backdrop-filter: blur(4px);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #58e0c6;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      border-bottom-color: #58e0c6;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 40px;
+      padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 0.95rem;
+      width: 230px;
+      outline: none;
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .search-bar button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-search {
+      background: #0d8c86;
+      color: #fff;
+    }
+
+    .btn-clear {
+      background: #fff;
+      color: #0d8c86;
+    }
+
+    /* Social Sidebar */
+    .social-sidebar {
+        position: fixed;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        z-index: 10;
+    }
+    .social-sidebar a {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: color 0.3s, transform 0.3s;
+    }
+    .social-sidebar a:hover {
+        color: #58e0c6;
+        transform: scale(1.2);
+    }
+
+    /* Page Content */
+    .page-content {
+      padding: 2rem 4rem 2rem 6rem; /* Left padding for sidebar */
+      min-height: calc(100vh - 120px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-title {
+        font-size: 4rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        letter-spacing: 2px;
+    }
+
+    .info-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 2.5rem;
+        border-radius: 0;
+        backdrop-filter: blur(5px);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        max-width: 1200px;
+    }
+
+    .description-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #eee;
+    }
+    
+    .description-text strong {
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .team-container {
+        display: flex;
+        align-items: stretch;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+    
+    .team-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        display: flex;
+        align-items: center;
+        min-width: 200px;
+    }
+
+    .team-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .team-card {
+        background: rgba(20, 40, 60, 0.6);
+        padding: 1.5rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .team-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .team-icon {
+        width: 45px;
+        height: 45px;
+        background: #1a4f7a;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffd700;
+        font-size: 1.2rem;
+    }
+
+    .team-name {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    .team-desc {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 0.5rem;
+        flex-grow: 1;
+    }
+
+    .role-badge {
+        background: #2c5282;
+        color: white;
+        padding: 0.6rem;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: auto;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-bar {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-bar input {
+        flex: 1;
+        width: auto;
+      }
+      
+      .page-content {
+          padding: 2rem;
+      }
+      
+      .social-sidebar {
+          display: none;
+      }
+      
+      .team-container {
+          flex-direction: column;
+          gap: 1rem;
+      }
+      
+      .team-title {
+          font-size: 2.5rem;
+          min-width: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: flex-start;
+      }
+      
+      .about-title {
+          font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="main-nav">
+    <div class="logo">Travel<span>Bloom</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Enter a destination or keyword">
+      <button class="btn-search">Search</button>
+      <button class="btn-clear">Clear</button>
+    </div>
+  </header>
+
+  <!-- Social Sidebar -->
+  <div class="social-sidebar">
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <!-- About Us Page Content -->
+  <div class="page-content">
+      <h1 class="about-title">ABOUT US</h1>
+      
+      <div class="info-box">
+        <p class="description-text">
+            Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers. Our mission is to <strong>provide the best experience</strong> for people traveling to different destinations around the world.<br>
+            Our values include integrity, innovation, customer satisfaction, and teamwork. We believe in <strong>putting our customers first</strong> and <strong>working together</strong> to achieve our goals.<br>
+            Feel free to explore our website to learn more about what we offer!
+        </p>
+      </div>
+
+      <div class="info-box team-container">
+        <div class="team-title">
+            Our<br>Team
+        </div>
+        <div class="team-grid">
+            <!-- Member 1 -->
+            <div class="team-card">
+                <div class="team-header">
+                    <div class="team-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="team-name">John Doe</div>
+                </div>
+                <div class="team-desc">John is responsible for...</div>
+                <div class="role-badge">CEO</div>
+            </div>
+            <!-- Member 2 -->
+            <div class="team-card">
+                <div class="team-header">
+                    <div class="team-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="team-name">Celina Thomas</div>
+                </div>
+                <div class="team-desc">Celina Thomas is responsible for...</div>
+                <div class="role-badge">Team Lead</div>
+            </div>
+            <!-- Member 3 -->
+            <div class="team-card">
+                <div class="team-header">
+                    <div class="team-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="team-name">Mike Tysen</div>
+                </div>
+                <div class="team-desc">Mike Tysen is responsible for...</div>
+                <div class="role-badge">Delivery Head</div>
+            </div>
+        </div>
+      </div>
+  </div>
+</body>
+
+</html>

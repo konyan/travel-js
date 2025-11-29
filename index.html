@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelBloom - Explore Dream Destination</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-H58XpWZ2G9r9bFJ8NXjg2zp5C52f40Z3mAWUEYTpF9M6rymdlmdVino2z1YJgjQly+Pd+UuM7Srbn2j6N39UgA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          border: 0;
+        }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      min-height: 100vh;
+      background: #0b2c3d;
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      /* City skyline background to match screenshot */
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2613&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      padding: 2rem 3rem 3rem;
+      overflow: hidden;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #58e0c6;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a.active,
+    nav a:hover {
+      border-bottom-color: #58e0c6;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(255, 255, 255, 0.8); /* Lighter background for search bar */
+      border-radius: 40px;
+      padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      color: #333; /* Darker text for input */
+      font-size: 0.95rem;
+      width: 230px;
+      outline: none;
+    }
+
+    .search-bar input::placeholder {
+      color: #666;
+    }
+
+    .search-bar button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-search {
+      background: #0d8c86;
+      color: #fff;
+    }
+
+    .btn-clear {
+      background: #0d8c86;
+      color: #fff;
+    }
+
+    .hero-content {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: flex-start; /* Align to top */
+      justify-content: space-between; /* Split left and right */
+      width: 100%;
+      height: calc(100vh - 200px);
+    }
+
+    .left-section {
+        display: flex;
+        gap: 2rem;
+        flex: 1;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .social-links::before {
+      content: '';
+      width: 2px;
+      height: 100px; /* Shortened line */
+      background: rgba(255, 255, 255, 0.4);
+      align-self: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none; /* Removed border */
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+      color: #58e0c6;
+      transform: translateY(-2px);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      max-width: 600px;
+      margin-top: 4rem;
+    }
+
+    .tagline {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: #c0f6ed;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .lead {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2.5rem;
+      border-radius: 4px;
+      border: none;
+      background: #0d8c86;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      background: #58e0c6;
+      color: #04303e;
+    }
+
+    /* Search Results Section */
+    .right-section {
+        flex: 1;
+        max-width: 600px;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-right: 2rem;
+        overflow-y: auto;
+        max-height: 80vh;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .right-section::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .result-card {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        overflow: hidden;
+        color: #333;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #000;
+    }
+
+    .card-desc {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .btn-visit {
+        background: #00897b;
+        color: white;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-visit:hover {
+        background: #00695c;
+    }
+
+    @media (max-width: 1024px) {
+      .main-nav {
+        flex-direction: column;
+      }
+
+      .search-bar {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-bar input {
+        flex: 1;
+        width: auto;
+      }
+      
+      .hero-content {
+          flex-direction: column;
+          height: auto;
+      }
+      
+      .right-section {
+          width: 100%;
+          max-width: 100%;
+          padding-right: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <header class="main-nav">
+      <div class="logo">Travel<span>Bloom</span></div>
+      <nav>
+        <ul>
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="text" placeholder="Enter a destination or keyword">
+        <button class="btn-search">Search</button>
+        <button class="btn-clear">Clear</button>
+      </div>
+    </header>
+
+    <div class="hero-content">
+      <div class="social-links">
+        <a href="#" aria-label="Follow us on Twitter">
+          <i class="fab fa-twitter"></i>
+          <span class="sr-only">Twitter</span>
+        </a>
+        <a href="#" aria-label="Follow us on Facebook">
+          <i class="fab fa-facebook-f"></i>
+          <span class="sr-only">Facebook</span>
+        </a>
+        <a href="#" aria-label="Follow us on Instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a href="#" aria-label="Watch us on YouTube">
+          <i class="fab fa-youtube"></i>
+          <span class="sr-only">YouTube</span>
+        </a>
+      </div>
+
+      <div class="hero-text">
+        <p class="tagline">Adventure awaits</p>
+        <h1>
+          <span>EXPLORE</span>
+          <span>DREAM</span>
+          <span>DESTINATION</span>
+        </h1>
+        <p class="lead">It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.</p>
+        <button class="cta-btn">Book Now</button>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

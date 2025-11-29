@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TravelBloom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-H58XpWZ2G9r9bFJ8NXjg2zp5C52f40Z3mAWUEYTpF9M6rymdlmdVino2z1YJgjQly+Pd+UuM7Srbn2j6N39UgA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      min-height: 100vh;
+      background: #062235;
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-image: linear-gradient(120deg, rgba(3, 50, 77, 0.92), rgba(6, 97, 116, 0.25)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 2rem 3rem 3rem;
+      overflow: hidden;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #58e0c6;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      border-bottom-color: #58e0c6;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 40px;
+      padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 0.95rem;
+      width: 230px;
+      outline: none;
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-bar button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-search {
+      background: #0d8c86;
+      color: #fff;
+    }
+
+    .btn-clear {
+      background: #fff;
+      color: #0d8c86;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: center;
+    }
+
+    .tagline {
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 4px;
+      color: #b6f0ea;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .info-card i {
+      font-size: 1.4rem;
+      color: #58e0c6;
+    }
+
+    .info-card .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .info-card .value {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-links a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background: #58e0c6;
+      color: #053542;
+      transform: translateY(-2px);
+    }
+
+    .contact-form-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-form-card h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-group textarea {
+      resize: none;
+      min-height: 140px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.95rem;
+      border-radius: 8px;
+      border: none;
+      background: #1cb5a3;
+      color: #04303e;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      background: #58e0c6;
+    }
+
+    @media (max-width: 1024px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-bar {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .search-bar input {
+        flex: 1;
+        width: auto;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: flex-start;
+      }
+
+      .contact-form-card {
+        padding: 1.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <header class="main-nav">
+      <div class="logo">Travel<span>Bloom</span></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="text" placeholder="Enter a destination or keyword">
+        <button class="btn-search">Search</button>
+        <button class="btn-clear">Clear</button>
+      </div>
+    </header>
+
+    <div class="contact-layout">
+      <div>
+        <p class="tagline">We would love to hear from you</p>
+        <h1>CONTACT US</h1>
+        <p class="lead">Share your travel dreams, ask a question, or plan your next getaway with our specialists. Our
+          team responds quickly and will guide you from first idea to boarding pass.</p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <p class="label">Call us</p>
+              <p class="value">+1 (800) 555-1234</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <p class="label">Email</p>
+              <p class="value">hello@travelbloom.com</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <p class="label">Visit</p>
+              <p class="value">350 5th Ave, New York</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h2>Send a Message</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your dream trip" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>
